@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            position: relative;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .slideshow-container {
+            max-width: 100%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .slide {
+            display: none;
+            width: 100%;
+        }
+        .slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            z-index: 1;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+        .dot-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .dot {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background-color: #bbb;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .active-dot {
+            background-color: #717171;
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <audio controls>
+        <source src="animal fight.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+
+    <h1>Interactive Gallery</h1>
+    <div class="slideshow-container">
+        <div class="slide">
+            <img src="image1.jpg" alt="Image 1">
+        </div>
+        <div class="slide">
+            <img src="image2.jpg" alt="Image 2">
+        </div>
+        <div class="slide">
+            <img src="image3.jpg" alt="Image 3">
+        </div>
+        <div class="slide">
+            <img src="image4.jpg" alt="Image 4">
+        </div>
+        <div class="slide">
+            <img src="image5.jpg" alt="Image 5">
+        </div>
+        <div class="slide">
+            <img src="image6.jpg" alt="Image 6">
+        </div>
+        <div class="slide">
+            <img src="image7.jpg" alt="Image 7">
+        </div>
+        <div class="slide">
+            <img src="image8.jpg" alt="Image 8">
+        </div>
+        <div class="slide">
+            <img src="image9.jpg" alt="Image 9">
+        </div>
+        <div class="slide">
+            <img src="image10.jpg" alt="Image 10">
+        </div>
+        <!-- Add more slides here -->
+        <button class="prev" onclick="plusSlides(-1)">❮</button>
+        <button class="next" onclick="plusSlides(1)">❯</button>
+    </div>
+    <div class="dot-container">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+        <span class="dot" onclick="currentSlide(6)"></span>
+        <span class="dot" onclick="currentSlide(7)"></span>
+        <span class="dot" onclick="currentSlide(8)"></span>
+        <span class="dot" onclick="currentSlide(9)"></span>
+        <span class="dot" onclick="currentSlide(10)"></span>
+        <!-- Add more dots here -->
+    </div>
+
+   
+
+    <div class="copyright">
+        &copy; 2024 Patel Restaurant. All rights reserved.
+    </div>
+    
+</div>
+
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        const slides = document.getElementsByClassName("slide");
+        const dots = document.getElementsByClassName("dot");
+        
+        if (n > slides.length) {
+            slideIndex = 1;
+        }    
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active-dot", "");
+        }
+        slides[slideIndex - 1].style.display = "block";  
+        dots[slideIndex - 1].className += " active-dot";
+    }
+</script>
+
+</body>
+</html>

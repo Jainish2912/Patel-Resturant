@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secure Online Payment</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 500px;
+        margin: 50px auto;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        text-align: center;
+    }
+
+    h2 {
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+    label {
+        font-weight: bold;
+        color: #333;
+        display: block;
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+        width: calc(100% - 24px);
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+        margin: 0 auto 20px;
+        display: block;
+    }
+
+    input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        padding: 15px 0;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 16px;
+        width: 100%;
+        transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    .error {
+        color: red;
+        margin-top: 5px;
+        font-size: 14px;
+        text-align: left;
+    }
+
+    .payment-logo {
+        width: 100px;
+        margin: 20px auto;
+    }
+
+    .grand-total {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Secure Online Payment</h2>
+
+    <audio controls>
+        <source src="salaar_bgm.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+
+
+    <form id="paymentForm" action="#" method="post">
+        <div class="payment-method">
+            <label for="payment_method">Select Payment Method:</label>
+            <select id="payment_method" name="payment_method">
+                <option value="">Select</option>
+                <option value="credit_card">Credit Card</option>
+                <option value="debit_card">Debit Card</option>
+                <option value="net_banking">Net Banking</option>
+                <option value="paypal">PayPal</option>
+                <option value="paytm">Paytm</option>
+                <option value="amazon_pay">Amazon Pay</option>
+                <option value="phonepe">PhonePe</option>
+                <option value="bhim_upi">BHIM UPI</option>
+            </select>
+        </div>
+        <div id="paymentDetails">
+            <label for="card_number">Card Number</label>
+            <input type="text" id="card_number" name="card_number" placeholder="Enter card number">
+            <div class="error" id="cardNumberError"></div>
+
+            <label for="expiry_date">Expiry Date</label>
+            <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY">
+            <div class="error" id="expiryDateError"></div>
+
+            <label for="cvv">CVV</label>
+            <input type="number" id="cvv" name="cvv" placeholder="Enter CVV">
+            <div class="error" id="cvvError"></div>
+
+            <label for="card_holder_name">Cardholder Name</label>
+            <input type="text" id="card_holder_name" name="card_holder_name" placeholder="Enter cardholder name">
+            <div class="error" id="cardHolderNameError"></div>
+        </div>
+        <input type="hidden" id="total_amount" name="total_amount" value="105.00">
+        <input type="submit" value="Proceed to Payment" id="proceedBtn">
+    </form>
+    <div class="payment-logos">
+        <img src="credit_card_logo.png" alt="Credit Card Logo" class="payment-logo">
+        <img src="debit_card_logo.png" alt="Debit Card Logo" class="payment-logo">
+        <img src="net_banking_logo.png" alt="Net Banking Logo" class="payment-logo">
+        <img src="paypal_logo.png" alt="PayPal Logo" class="payment-logo">
+        <img src="paytm_logo.png" alt="Paytm Logo" class="payment-logo">
+        <img src="amazon_pay_logo.png" alt="Amazon Pay Logo" class="payment-logo">
+        <img src="phonepe_logo.png" alt="PhonePe Logo" class="payment-logo">
+        <img src="bhim_upi_logo.png" alt="BHIM UPI Logo" class="payment-logo">
+    </div>
+    <div class="grand-total">
+        Grand Total (including 5% GST): $105.00
+    </div>
+</div>
+
+<script>
+    document.getElementById('paymentForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Get payment method and form data
+        var paymentMethod = document.getElementById('payment_method').value;
+        var formData = new FormData(this);
+
+        // Get redirect URL based on payment method
+        var redirectURL = getRedirectURL(paymentMethod);
+
+        // If redirect URL is available, redirect the user
+        if (redirectURL !== '') {
+            window.location.href = redirectURL;
+        } else {
+            // If redirect URL is not available, dynamically create a form and submit it
+            var redirectForm = document.createElement('form');
+            redirectForm.setAttribute('method', 'POST');
+            redirectForm.setAttribute('action', '#'); // Placeholder action
+            // Append form data to the dynamic form
+            for (var pair of formData.entries()) {
+                var input = document.createElement('input');
+                input.setAttribute('type', 'hidden');
+                input.setAttribute('name', pair[0]);
+                input.setAttribute('value', pair[1]);
+                redirectForm.appendChild(input);
+            }
+            // Append the dynamic form to the document body and submit it
+            document.body.appendChild(redirectForm);
+            redirectForm.submit();
+        }
+    });
+
+    // Function to get redirect URL based on payment method
+    function getRedirectURL(paymentMethod) {
+        switch (paymentMethod) {
+            case 'credit_card':
+                return 'https://bank.com/credit_card_payment';
+            case 'debit_card':
+                return 'https://bank.com/debit_card_payment';
+            case 'net_banking':
+                return 'https://bank.com/net_banking_payment';
+            case 'paypal':
+                return 'https://www.paypal.com/payment';
+            case 'paytm':
+                return 'https://paytm.com/payment';
+            case 'amazon_pay':
+                return 'https://www.amazon.com/payment';
+            case 'phonepe':
+                return 'https://www.phonepe.com/payment';
+            case 'bhim_upi':
+                return 'https://www.bhimupi.com/payment';
+            default:
+                return ''; // Empty string for unsupported payment methods
+        }
+    }
+</script>
+
+</body>
+</html>

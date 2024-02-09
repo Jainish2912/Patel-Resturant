@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reservation Confirmation</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 500px;
+        margin: 50px auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        text-align: center;
+    }
+
+    h2 {
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+    .reservation-details {
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+    .reservation-details p {
+        margin-bottom: 10px;
+    }
+
+    .btn-back {
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        display: inline-block;
+    }
+
+    .btn-back:hover {
+        background-color: #45a049;
+    }
+
+    .thank-you {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .note {
+        font-size: 14px;
+        color: #999;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Reservation Confirmation</h2>
+
+
+
+
+    <audio controls>
+        <source src="leo_title_card.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+
+
+
+
+
+
+    <div class="reservation-details">
+        <p class="thank-you">Thank you for your reservation, <span id="customerName"></span>!</p>
+        <p class="reservation-info">Your reservation details:</p>
+        <p><strong>Email:</strong> <span id="customerEmail"></span></p>
+        <p><strong>Phone:</strong> <span id="customerPhone"></span></p>
+        <p><strong>Date:</strong> <span id="reservationDate"></span></p>
+        <p><strong>Time:</strong> <span id="reservationTime"></span></p>
+        <p><strong>Number of Guests:</strong> <span id="numberOfGuests"></span></p>
+        <p><strong>Message:</strong> <span id="customerMessage"></span></p>
+    </div>
+    <a href="reservation.html" class="btn-back">Make Another Reservation</a>
+</div>
+
+<script>
+    // Retrieve form field values from URL query parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const customerName = urlParams.get('name');
+    const customerEmail = urlParams.get('email');
+    const customerPhone = urlParams.get('phone');
+    const reservationDate = urlParams.get('date');
+    const reservationTime = urlParams.get('time');
+    const numberOfGuests = urlParams.get('guests');
+    const customerMessage = urlParams.get('message');
+
+    // Display values in the confirmation message
+    if (customerName) {
+        document.getElementById('customerName').textContent = customerName;
+    }
+    if (customerEmail) {
+        document.getElementById('customerEmail').textContent = customerEmail;
+    }
+    if (customerPhone) {
+        document.getElementById('customerPhone').textContent = customerPhone;
+    }
+    if (reservationDate) {
+        document.getElementById('reservationDate').textContent = reservationDate;
+    }
+    if (reservationTime) {
+        document.getElementById('reservationTime').textContent = reservationTime;
+    }
+    if (numberOfGuests) {
+        document.getElementById('numberOfGuests').textContent = numberOfGuests;
+    }
+    if (customerMessage) {
+        document.getElementById('customerMessage').textContent = customerMessage;
+    }
+</script>
+
+</body>
+</html>

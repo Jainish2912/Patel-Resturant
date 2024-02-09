@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Order Form & Payment Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2, h3 {
+      color: #333;
+    }
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .menu-item {
+      flex: 0 0 calc(33.33% - 20px);
+      margin: 10px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+    }
+
+    .menu-item img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .menu-item h3 {
+      margin: 0;
+      color: #555;
+    }
+
+    input[type="number"] {
+      width: 60px;
+      padding: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #payment-page {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #payment-box {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    #payment-box:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Restaurant Order Form & Payment Page</h1>
+  
+    <!-- Order Form -->
+    <div id="order-form">
+      <h2>Order Form</h2>
+      <form id="order-form-fields">
+        <!-- Customer Information Fields -->
+        <input type="text" id="name" name="name" placeholder="Your Name" required><br>
+        <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required><br>
+        <input type="email" id="email" name="email" placeholder="Your Email" required><br><br>
+
+        <!-- Menu Items with Quantities -->
+        <!-- Add more items here -->
+        <div class="menu-item">
+          <h3>Noodles</h3>
+          <img src="noodles.jpg" alt="Noodles Image">
+          <input type="number" id="noodles-quantity" name="noodles-quantity" value="0" min="0">
+        </div>
+
+        <!-- Add more items here -->
+        <div class="menu-item">
+          <h3>Manchurian</h3>
+          <img src="manchurian.jpg" alt="Manchurian Image">
+          <input type="number" id="manchurian-quantity" name="manchurian-quantity" value="0" min="0">
+        </div>
+
+        <!-- Add more items here -->
+        <div class="menu-item">
+          <h3>Pudding</h3>
+          <img src="pudding.jpg" alt="Pudding Image">
+          <input type="number" id="pudding-quantity" name="pudding-quantity" value="0" min="0">
+        </div>
+
+        <!-- Add more items here -->
+        <div class="menu-item">
+          <h3>Ice Cream</h3>
+          <img src="ice-cream.jpg" alt="Ice Cream Image">
+          <input type="number" id="ice-cream-quantity" name="ice-cream-quantity" value="0" min="0">
+        </div>
+
+        <!-- Add more items here -->
+        <div class="menu-item">
+          <h3>Juice</h3>
+          <img src="juice.jpg" alt="Juice Image">
+          <input type="number" id="juice-quantity" name="juice-quantity" value="0" min="0">
+        </div>
+
+        <!-- Add more items here -->
+        <div class="menu-item">
+          <h3>Burger</h3>
+          <img src="burger.jpg" alt="Burger Image">
+          <input type="number" id="burger-quantity" name="burger-quantity" value="0" min="0">
+        </div>
+
+        <!-- Add more items here -->
+        <div class="menu-item">
+          <h3>Pizza</h3>
+          <img src="pizza.jpg" alt="Pizza Image">
+          <input type="number" id="pizza-quantity" name="pizza-quantity" value="0" min="0">
+        </div>
+
+        <!-- Add more items here -->
+        <div class="menu-item">
+          <h3>Fries</h3>
+          <img src="fries.jpg" alt="Fries Image">
+          <input type="number" id="fries-quantity" name="fries-quantity" value="0" min="0">
+        </div>
+
+        <!-- Add more items here -->
+        <div class="menu-item">
+          <h3>Dounuts</h3>
+          <img src="dounuts.jpg" alt="Dounuts Image">
+          <input type="number" id="dounuts-quantity" name="dounuts-quantity" value="0" min="0">
+        </div>
+
+        <!-- Add more items here -->
+        <div class="menu-item">
+          <h3>Pancakes</h3>
+          <img src="pancakes.jpg" alt="Pancakes Image">
+          <input type="number" id="pancakes-quantity" name="pancakes-quantity" value="0" min="0">
+        </div>
+
+        <!-- Add more items here -->
+        <div class="menu-item">
+          <h3>Soup</h3>
+          <img src="soup.jpg" alt="Soup Image">
+          <input type="number" id="soup-quantity" name="soup-quantity" value="0" min="0">
+        </div>
+
+        <!-- Add more items here -->
+        <div class="menu-item">
+          <h3>Sandwich</h3>
+          <img src="sandwich.jpg" alt="Sandwich Image">
+          <input type="number" id="sandwich-quantity" name="sandwich-quantity" value="0" min="0">
+        </div>
+
+        <!-- Add more items here -->
+        <div class="menu-item">
+          <h3>Spaghetti</h3>
+          <img src="spaghetti.jpg" alt="Spaghetti Image">
+          <input type="number" id="spaghetti-quantity" name="spaghetti-quantity" value="0" min="0">
+        </div>
+
+        <!-- Add more items here -->
+        <div class="menu-item">
+          <h3>Steak</h3>
+          <img src="steak.jpg" alt="Steak Image">
+          <input type="number" id="steak-quantity" name="steak-quantity" value="0" min="0">
+        </div>
+
+        <!-- Add more items here -->
+        <div class="menu-item">
+          <h3>Sushi</h3>
+          <img src="sushi.jpg" alt="Sushi Image">
+          <input type="number" id="sushi-quantity" name="sushi-quantity" value="0" min="0">
+        </div>
+
+        <!-- Add more items here -->
+        <div class="menu-item">
+          <h3>Coffee</h3>
+          <img src="coffee.jpg" alt="Coffee Image">
+          <input type="number" id="coffee-quantity" name="coffee-quantity" value="0" min="0">
+        </div>
+
+        <!-- Add more items here -->
+        <div class="menu-item">
+          <h3>Cod Coffee</h3>
+          <img src="cod-coffee.jpg" alt="Cod Coffee Image">
+          <input type="number" id="cod-coffee-quantity" name="cod-coffee-quantity" value="0" min="0">
+        </div>
+
+        <!-- Add more items here -->
+        <div class="menu-item">
+          <h3>Desserts</h3>
+          <img src="desserts.jpg" alt="Desserts Image">
+          <input type="number" id="desserts-quantity" name="desserts-quantity" value="0" min="0">
+        </div>
+
+        <!-- Add more items here -->
+        <div class="menu-item">
+          <h3>Dosa</h3>
+          <img src="dosa.jpg" alt="Dosa Image">
+          <input type="number" id="dosa-quantity" name="dosa-quantity" value="0" min="0">
+        </div>
+
+        <!-- Submit Button -->
+        <button type="button" onclick="submitOrder()">Place Order</button>
+      </form>
+    </div>
+
+    <!-- Payment Page -->
+    <div id="payment-page">
+      <h2>Payment Page</h2>
+      <div class="payment-details">
+        <p>Thank you for your order!</p>
+        <p>Total Amount: $<span id="total-amount"></span></p>
+        <p>Please proceed with the payment:</p>
+        <button id="payment-box">Proceed to Payment</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function submitOrder() {
+      var totalPrice = calculateTotalPrice();
+      var customerInfo = {
+        name: document.getElementById('name').value,
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value
+      };
+      var token = generateJWTToken(totalPrice, customerInfo);
+
+      // Display Payment Page
+      document.getElementById('order-form').style.display = 'none';
+      document.getElementById('payment-page').style.display = 'block';
+
+      // Display total amount
+      document.getElementById('total-amount').innerText = "$" + totalPrice.toFixed(2);
+      
+      // Redirect to payment page
+      document.getElementById('payment-box').addEventListener('click', function() {
+        window.location.href = "file:///C:/Users/hp/Desktop/assingemt%20.htm/Resturant%20bill/online%20payments.html"
+      });
+    }
+
+    function calculateTotalPrice() {
+      var totalPrice = 0;
+      // Calculate total price based on item quantities
+      totalPrice += parseFloat(document.getElementById('noodles-quantity').value) * 6; // Noodles price
+      totalPrice += parseFloat(document.getElementById('manchurian-quantity').value) * 8; // Manchurian price
+      totalPrice += parseFloat(document.getElementById('pudding-quantity').value) * 5; // Pudding price
+      totalPrice += parseFloat(document.getElementById('ice-cream-quantity').value) * 3; // Ice Cream price
+      totalPrice += parseFloat(document.getElementById('juice-quantity').value) * 2; // Juice price
+      totalPrice += parseFloat(document.getElementById('burger-quantity').value) * 8; // Burger price
+      totalPrice += parseFloat(document.getElementById('pizza-quantity').value) * 10; // Pizza price
+      totalPrice += parseFloat(document.getElementById('fries-quantity').value) * 4; // Fries price
+      totalPrice += parseFloat(document.getElementById('dounuts-quantity').value) * 2; // Dounuts price
+      totalPrice += parseFloat(document.getElementById('pancakes-quantity').value) * 4; // Pancakes price
+      totalPrice += parseFloat(document.getElementById('soup-quantity').value) * 5; // Soup price
+      totalPrice += parseFloat(document.getElementById('sandwich-quantity').value) * 6; // Sandwich price
+      totalPrice += parseFloat(document.getElementById('spaghetti-quantity').value) * 7; // Spaghetti price
+      totalPrice += parseFloat(document.getElementById('steak-quantity').value) * 12; // Steak price
+      totalPrice += parseFloat(document.getElementById('sushi-quantity').value) * 10; // Sushi price
+      totalPrice += parseFloat(document.getElementById('coffee-quantity').value) * 3; // Coffee price
+      totalPrice += parseFloat(document.getElementById('cod-coffee-quantity').value) * 4; // Cod Coffee price
+      totalPrice += parseFloat(document.getElementById('desserts-quantity').value) * 6; // Desserts price
+      totalPrice += parseFloat(document.getElementById('dosa-quantity').value) * 8; // Dosa price
+
+      return totalPrice;
+    }
+
+    function generateJWTToken(totalPrice, customerInfo) {
+      // Generate JWT token with total amount and customer information
+      var tokenPayload = {
+        totalPrice: totalPrice,
+        customerInfo: customerInfo
+      };
+      var token = btoa(JSON.stringify(tokenPayload)); // Encode payload as base64
+      return token;
+    }
+  </script>
+</body>
+</html>

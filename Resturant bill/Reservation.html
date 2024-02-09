@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reservation Form</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 500px;
+        margin: 50px auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        text-align: center;
+    }
+
+    h2 {
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+    label {
+        font-weight: bold;
+        color: #333;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    select {
+        appearance: none;
+        background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+        background-repeat: no-repeat;
+        background-position: right 10px top 50%;
+        background-size: 24px;
+        padding-right: 40px;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        padding: 12px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    .note {
+        font-size: 14px;
+        color: #666;
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Reservation Form</h2>
+
+
+    <audio controls>
+        <source src="mathew_theme_jailer.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+
+
+
+
+
+    <form action="confirmation.html" method="get">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">Time</label>
+        <input type="time" id="time" name="time" required>
+
+        <label for="guests">Number of Guests</label>
+        <select id="guests" name="guests" required>
+            <option value="">Select Number of Guests</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10+">10 or more</option>
+        </select>
+
+        <label for="message">Additional Message (Optional)</label>
+        <textarea id="message" name="message" rows="4" placeholder="Enter any additional message"></textarea>
+
+        <input type="submit" value="Submit Reservation">
+
+        <p class="note">* All fields are required</p>
+    </form>
+</div>
+
+</body>
+</html>
